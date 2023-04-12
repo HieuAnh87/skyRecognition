@@ -24,7 +24,7 @@ def loadData():
     data = []
     labels = []
     fileName = []
-    for path in glob.glob('/datasetSky2/*/**.jpg'):
+    for path in glob.glob('datasetSky2/*/**.jpg'):
         _, brand, fn = path.split('/')
         # _ : datasetSky2, brand : sunset, fn : fileName
         # tiền xử lý Dl
@@ -201,6 +201,7 @@ def predict(img, train):
 
 def saveFeature():
     data, target, fileName = loadData()
+    print("data", len(data))
     choose = mbox.askquestion("Question", "Lưu đặc trưng ??")
     if choose == 'yes':
         nameFile = simpledialog.askstring(title="Title", prompt="Nhap ten file ")
@@ -218,7 +219,6 @@ def saveFeature():
 def findkNeast():
     gray = plt.imread(anh_like, cv2.IMREAD_UNCHANGED)
 
-    print('anh like', gray)
     import matplotlib.image as mpimg
     plt.figure(figsize=(12, 4))  # chia khoảng cho 2 ảnh
     plt.subplot(1, 2, 1)  # tạo 2 ô gồm 1 dòng 2 cột ảnh 1 ở cột 1
